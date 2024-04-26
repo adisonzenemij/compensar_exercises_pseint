@@ -1,4 +1,4 @@
-Algoritmo AP_1_Cocinar
+Algoritmo Cook_Egg
 	Definir continuar Como Logico
 	continuar = Verdadero
 	Mientras continuar Hacer

@@ -1,8 +1,8 @@
 Algoritmo AP_1_Cocinar
 	Definir continuar Como Logico
-    continuar = Verdadero
+	continuar = Verdadero
 	Mientras continuar Hacer
-		Escribir "¿Cuantos huevos de codorniz comprarás?"
+		Escribir "ï¿½Cuantos huevos de codorniz comprarï¿½s?"
 		Leer huevos
 		LimpiarPantalla
 		Si IsNumber(huevos) Entonces
@@ -10,28 +10,28 @@ Algoritmo AP_1_Cocinar
 			continuar = Falso
 		Sino
 			LimpiarPantalla
-			Escribir "Permitido unicamente números"
+			Escribir "Permitido unicamente nï¿½meros"
 		FinSi
 	FinMientras
 FinAlgoritmo
 
 // Cocinar huevos
 Funcion excCookFood(huevos)
-	Escribir "(Si | No): ¿Encender el fogón de la estufa?"
+	Escribir "(Si | No): ï¿½Encender el fogï¿½n de la estufa?"
 	Leer fogon
 	Si fogon = "Si" Entonces
 		LimpiarPantalla
 		excPotWater(huevos)
 	Sino
 		LimpiarPantalla
-		Escribir "Tienes que encender el fogón"
+		Escribir "Tienes que encender el fogï¿½n"
 		excCookFood(huevos)
 	Fin Si
 FinFuncion
 
 // Olla con agua
 Funcion excPotWater(huevos)
-	Escribir "(Si | No): ¿Colocar la olla con agua?"
+	Escribir "(Si | No): ï¿½Colocar la olla con agua?"
 	Leer olla
 	Si olla = "Si" Entonces
 		LimpiarPantalla
@@ -45,7 +45,7 @@ FinFuncion
 
 // Hechar alimentos en olla
 Funcion excMakerPot(huevos)
-	Escribir "(Si | No): ¿Hechar los " + huevos + " huevos en la olla?"
+	Escribir "(Si | No): ï¿½Hechar los " + huevos + " huevos en la olla?"
 	Leer agua
 	Si agua = "Si" Entonces
 		LimpiarPantalla
@@ -59,14 +59,14 @@ FinFuncion
 
 // Validar captura de numeros
 Funcion validTimeBoil(huevos)
-	Escribir "¿Cuánto tiempo hervirán los " + huevos + " huevos?"
+	Escribir "ï¿½Cuï¿½nto tiempo hervirï¿½n los " + huevos + " huevos?"
 	Leer timeMinute
 	Si IsNumber(timeMinute) Entonces
 		LimpiarPantalla
 		validTimeEgg(timeMinute, huevos)
 	Sino
 		LimpiarPantalla
-		Escribir "Permitido unicamente números"
+		Escribir "Permitido unicamente nï¿½meros"
 		validTimeBoil(huevos)
 	FinSi
 FinFuncion
@@ -107,20 +107,20 @@ FinFuncion
 
 Funcion info <- IsNumber ( valor )
 	//Escribir "Valor Recibido:" + " " + valor
-    Definir esNumeros Como Logico
-    Definir longitudes Como Entero
-    Definir i Como Entero
-    Definir caracter Como Caracter
+	Definir esNumeros Como Logico
+	Definir longitudes Como Entero
+	Definir i Como Entero
+	Definir caracter Como Caracter
 	
-    longitudes = Longitud(valor)
-    esNumeros = Verdadero
+	longitudes = Longitud(valor)
+	esNumeros = Verdadero
 	
-    Para i = 1 Hasta longitudes Hacer
-        caracter = SubCadena(valor, i, 1)
-        Si caracter < "0" O caracter > "9" Entonces
-            esNumeros = Falso
-        FinSi
-    FinPara
+	Para i = 1 Hasta longitudes Hacer
+		caracter = SubCadena(valor, i, 1)
+		Si caracter < "0" O caracter > "9" Entonces
+			esNumeros = Falso
+		FinSi
+	FinPara
 	
-    info = esNumeros
+	info = esNumeros
 FinFuncion

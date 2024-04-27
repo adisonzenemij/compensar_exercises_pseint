@@ -1,4 +1,4 @@
-// Figura Geometrica: Rectangulo
+// Figura Geometrica: Rombo
 Algoritmo Geometry_Rhombus
 	// Definir Variables
 	Definir major, minor Como Real

@@ -3,10 +3,8 @@ Algoritmo Invoices
 	// Definir Variables
     Definir value, count Como Real
 	
+	message
     // Capturar Datos
-	Escribir repeat("-", 44)
-	Escribir repeat("*", 15), " SuperMercado " , repeat("*", 15)
-	Escribir repeat("-", 44)
     Escribir "Digita el valor unitario del producto"
     Leer value
     Escribir "Digita la cantidad de productos"
@@ -27,15 +25,16 @@ Funcion proccess(value, count)
     // Calcular Total Pago
     total = subTotal + iva
 	// Imprimir Resultados
-	printResult(value, subTotal, total)
+	printResult(count, value, subTotal, total)
 FinFuncion
 
 // Imprimir Resultados
-Funcion printResult(value, subTl, total)
+Funcion printResult(count, value, subTl, total)
 	// Definir Variables
 	Definir tProd, tSubt, tPaym Como Caracter
 	
 	// Asignar Mensajes
+	tCnt  = "Cantidad de Productos  "
 	tProd = "Valor Unitario Producto"
 	tSubt = "Subtotal Sin IVA       "
 	tPaym = "Valor Total Pago       "
@@ -44,18 +43,25 @@ Funcion printResult(value, subTl, total)
 	rProd = roundReal(value)
 	rSubt = roundReal(subTl)
 	rPaym = roundReal(total)
-	Escribir rPaym
 	
 	// Asignar Espacios
+	sCnt  = space(15 - lenght(count))
 	sProd = space(15 - lenght(rProd))
 	sSubt = space(15 - lenght(rSubt))
 	sPaym = space(15 - lenght(rPaym))
 	
 	// Imprimir Mensajes
-	Escribir repeat("-", 44)
+	message
+	Escribir "| ", tCnt, " | ", sCnt, count, " |"
 	Escribir "| ", tProd, " | ", sProd, rProd, " |"
     Escribir "| ", tSubt, " | ", sSubt, rSubt, " |"
     Escribir "| ", tPaym, " | ", sPaym, rPaym, " |"
+	Escribir repeat("-", 44)
+FinFuncion
+
+Funcion message
+	Escribir repeat("-", 44)
+	Escribir repeat("*", 15), " SuperMercado " , repeat("*", 15)
 	Escribir repeat("-", 44)
 FinFuncion
 
@@ -91,6 +97,5 @@ FinFuncion
 Funcion info <- roundReal(value)
 	Definir endInt, endDecimal Como Real
 	endInt <- trunc(value)
-	endDecimal <- (value - endInt) * 100
 	info = endInt
 FinFuncion

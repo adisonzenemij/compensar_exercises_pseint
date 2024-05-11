@@ -35,10 +35,11 @@ Algoritmo Note_Student
 		LimpiarPantalla
     FinPara
 	
-	// Visualizar Datos Organizados
+	// Visualizar Datos
 	printResult(studenNum, studentCount, noteFinal)
 FinAlgoritmo
 
+// Imprimir Resultados
 Funcion printResult(studenNum, studentCount, noteFinal)
 	// Visualizar Datos Organizados
 	message
@@ -62,6 +63,7 @@ Funcion printResult(studenNum, studentCount, noteFinal)
         Escribir "| ", sStud, tStud, " | ", sOne, tOne, " | ", sTwo, tTwo, " | ", sThree, tThree, " | ", sFour, tFour, " | ", sFinal, tFinal, " |"
     FinPara
 	Escribir repeat("-", 63)
+	webPage
 FinFuncion
 
 Funcion info <- execCalificate(value, perc, text)
@@ -70,18 +72,21 @@ Funcion info <- execCalificate(value, perc, text)
 	info = value * perc / 100
 FinFuncion
 
+// Mensaje Personalizado
 Funcion message
 	Escribir repeat("-", 63)
 	Escribir repeat("*", 22), " Fundacion Renacer ", repeat("*", 22)
 	Escribir repeat("-", 63)
 FinFuncion
 
+// Contar Caracteres
 Funcion info <- lenght(value)
     Definir text Como Cadena
     text = ConvertirATexto(value)
     info = Longitud(text)
 FinFuncion
 
+// Generar Espacios
 Funcion info <- space(count)
     Definir result Como Cadena
     final = count - 1
@@ -92,6 +97,7 @@ Funcion info <- space(count)
     info = result
 FinFuncion
 
+// Repetir Valores
 Funcion info <- repeat(character, count)
     Definir result Como Cadena
     result = ""
@@ -99,4 +105,11 @@ Funcion info <- repeat(character, count)
         result = result + character
     FinPara
     info = result
+FinFuncion
+
+// Mensaje Personalizadp
+Funcion webPage
+	Escribir repeat("*", 19), "  www.adisonjimenez.net  ", repeat("*", 19)
+	Escribir repeat("*", 19), "     www.engsoft.app     ", repeat("*", 19)
+	Escribir repeat("-", 63)
 FinFuncion

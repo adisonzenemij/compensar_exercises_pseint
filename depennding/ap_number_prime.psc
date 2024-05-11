@@ -2,6 +2,7 @@
 Algoritmo Number_Prime
 	// Definir Variables
     Definir number, divider, isPrime Como Entero
+	
 	// Asignar Valores
 	idxTotal = 0
 	idxMore = 1
@@ -33,32 +34,36 @@ Algoritmo Number_Prime
 	// Asignar Valores
 	idxTotal = idxMore - 1
 	
-	// Imprimir Resultados
+	// Visualizar Datos
 	printResult(idxTotal, data)
 FinAlgoritmo
 
+// Imprimir Resultados
 Funcion printResult(index, data)
 	// Organizar Datos
-	Escribir repeat("-", 13)
-	Escribir "| Nro Primo |"
-	Escribir repeat("-", 13)
+	Escribir repeat("-", 25)
+	Escribir "|      Numero Primo     |"
+	Escribir repeat("-", 25)
 	Para item = 1 Hasta index Con Paso 1 Hacer
 		// Asignar Valores
 		tNum = data[item, 2]
 		// Calcular Espacios
-		sNum = space(10 - lenght(tNum))
+		sNum = space(13 - lenght(tNum))
 		// Imprimir Resultados
-		Escribir "| ", sNum, tNum, " |"
+		Escribir "| ", sNum, tNum, repeat(" ", 9), " |"
     FinPara
-	Escribir repeat("-", 13)
+	Escribir repeat("-", 25)
+	webPage
 FinFuncion
 
+// Contar Caracteres
 Funcion info <- lenght(value)
     Definir text Como Cadena
     text = ConvertirATexto(value)
     info = Longitud(text)
 FinFuncion
 
+// Generar Espacios
 Funcion info <- space(count)
     Definir result Como Cadena
     final = count - 1
@@ -69,6 +74,7 @@ Funcion info <- space(count)
     info = result
 FinFuncion
 
+// Repetir Valores
 Funcion info <- repeat(character, count)
     Definir result Como Cadena
     result = ""
@@ -76,4 +82,11 @@ Funcion info <- repeat(character, count)
         result = result + character
     FinPara
     info = result
+FinFuncion
+
+// Mensaje Personalizadp
+Funcion webPage
+	Escribir "* www.adisonjimenez.net *"
+	Escribir "*    www.engsoft.app    *"
+	Escribir repeat("-", 25)
 FinFuncion

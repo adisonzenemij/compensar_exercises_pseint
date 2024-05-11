@@ -27,30 +27,34 @@ Algoritmo Number_Pars
 	printResult(idxTotal, data)
 FinAlgoritmo
 
+// Imprimir Resultados
 Funcion printResult(index, data)
 	// Organizar Datos
-	Escribir repeat("-", 22)
-	Escribir "| Nro Par | Cuadrado |"
-	Escribir repeat("-", 22)
+	Escribir repeat("-", 25)
+	Escribir "| Numero Par | Cuadrado |"
+	Escribir repeat("-", 25)
 	Para item = 1 Hasta index Con Paso 1 Hacer
 		// Asignar Valores
 		tPair = data[item, 2]
 		tSquare = data[item, 3]
 		// Calcular Espacios
-		sPair = space(8 - lenght(tPair))
+		sPair = space(11 - lenght(tPair))
 		sSquare = space(9 - lenght(tSquare))
 		// Imprimir Resultados
 		Escribir "| ", sPair, tPair, " | ", sSquare, tSquare, " |"
     FinPara
-	Escribir repeat("-", 22)
+	Escribir repeat("-", 25)
+	webPage
 FinFuncion
 
+// Contar Caracteres
 Funcion info <- lenght(value)
     Definir text Como Cadena
     text = ConvertirATexto(value)
     info = Longitud(text)
 FinFuncion
 
+// Generar Espacios
 Funcion info <- space(count)
     Definir result Como Cadena
     final = count - 1
@@ -61,6 +65,7 @@ Funcion info <- space(count)
     info = result
 FinFuncion
 
+// Repetir Valores
 Funcion info <- repeat(character, count)
     Definir result Como Cadena
     result = ""
@@ -68,4 +73,11 @@ Funcion info <- repeat(character, count)
         result = result + character
     FinPara
     info = result
+FinFuncion
+
+// Mensaje Personalizadp
+Funcion webPage
+	Escribir "* www.adisonjimenez.net *"
+	Escribir "*    www.engsoft.app    *"
+	Escribir repeat("-", 25)
 FinFuncion

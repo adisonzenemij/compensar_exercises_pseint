@@ -29,7 +29,7 @@ Funcion execCalculate(buy)
 		discount = buy * rebate
 	FinSi
     total = buy - discount
-	// Imprimir Resultados
+	// Visualizar Datos
 	printResult(buy, discount, rebate * 100, total)
 FinFuncion
 
@@ -48,14 +48,18 @@ Funcion printResult(buy, discount, rebate, total)
     Escribir "| Descuento           | ", ltDiscount, discount, " |"
     Escribir "| Valor Total         | ", ltTotal, total, " |"
     Escribir repeat("-", 39)
+	
+	webPage
 FinFuncion
 
+// Contar Caracteres
 Funcion info <- lenght(value)
     Definir text Como Cadena
     text = ConvertirATexto(value)
     info = Longitud(text)
 FinFuncion
 
+// Generar Espacios
 Funcion info <- space(count)
     Definir result Como Cadena
     final = count - 1
@@ -66,6 +70,7 @@ Funcion info <- space(count)
     info = result
 FinFuncion
 
+// Repetir Valores
 Funcion info <- repeat(character, count)
     Definir result Como Cadena
     result = ""
@@ -73,4 +78,11 @@ Funcion info <- repeat(character, count)
         result = result + character
     FinPara
     info = result
+FinFuncion
+
+// Mensaje Personalizadp
+Funcion webPage
+	Escribir repeat("*", 7), "  www.adisonjimenez.net  ", repeat("*", 7)
+	Escribir repeat("*", 7), "     www.engsoft.app     ", repeat("*", 7)
+	Escribir repeat("-", 39)
 FinFuncion

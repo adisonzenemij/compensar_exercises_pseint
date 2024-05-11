@@ -24,7 +24,8 @@ Funcion proccess(value, count)
     iva = subTotal * 0.19
     // Calcular Total Pago
     total = subTotal + iva
-	// Imprimir Resultados
+	
+	// Visualizar Datos
 	printResult(count, value, subTotal, total)
 FinFuncion
 
@@ -45,10 +46,10 @@ Funcion printResult(count, value, subTl, total)
 	rPaym = roundReal(total)
 	
 	// Asignar Espacios
-	sCnt  = space(15 - lenght(count))
-	sProd = space(15 - lenght(rProd))
-	sSubt = space(15 - lenght(rSubt))
-	sPaym = space(15 - lenght(rPaym))
+	sCnt  = space(16 - lenght(count))
+	sProd = space(16 - lenght(rProd))
+	sSubt = space(16 - lenght(rSubt))
+	sPaym = space(16 - lenght(rPaym))
 	
 	// Imprimir Mensajes
 	message
@@ -57,12 +58,14 @@ Funcion printResult(count, value, subTl, total)
     Escribir "| ", tSubt, " | ", sSubt, rSubt, " |"
     Escribir "| ", tPaym, " | ", sPaym, rPaym, " |"
 	Escribir repeat("-", 44)
+	webPage
 FinFuncion
 
+// Mensaje Personalizado
 Funcion message
-	Escribir repeat("-", 44)
-	Escribir repeat("*", 15), " SuperMercado " , repeat("*", 15)
-	Escribir repeat("-", 44)
+	Escribir repeat("-", 45)
+	Escribir repeat("*", 15), " Super Mercado " , repeat("*", 15)
+	Escribir repeat("-", 45)
 FinFuncion
 
 // Contar Caracteres
@@ -98,4 +101,11 @@ Funcion info <- roundReal(value)
 	Definir endInt, endDecimal Como Real
 	endInt <- trunc(value)
 	info = endInt
+FinFuncion
+
+// Mensaje Personalizadp
+Funcion webPage
+	Escribir repeat("*", 10), "  www.adisonjimenez.net  ", repeat("*", 10)
+	Escribir repeat("*", 10), "     www.engsoft.app     ", repeat("*", 10)
+	Escribir repeat("-", 45)
 FinFuncion

@@ -1,12 +1,12 @@
-// Ejercicio Descuento
+// Ejercicio Descuentos
 Algoritmo Discounts
 	// Definir Variables
 	Definir buy Como Real
 	// Capturar Datos
-	Escribir "---------------------------------------"
-	Escribir "************ Supermercado *************"
-	Escribir "---------------------------------------"
-	Escribir "*  Digita el valor de la compra:  *"
+	Escribir repeat("-", 39)
+	Escribir repeat("*", 12), " Supermercado ", repeat("*", 12)
+	Escribir repeat("-", 39)
+	Escribir "*    Digita el valor de la compra:    *"
     Leer buy
 	// Ejecutar Proceso
 	execCalculate(buy)
@@ -35,33 +35,42 @@ FinFuncion
 
 // Imprimir Resultados
 Funcion printResult(buy, discount, rebate, total)
-	ltBuy = space(14 - lenghtNumberReal(buy))
-	ltRebate = space(13 - lenghtNumberReal(rebate))
-	ltDiscount = space(14 - lenghtNumberReal(discount))
-	ltTotal = space(14 - lenghtNumberReal(total))
+	ltBuy = space(14 - lenght(buy))
+	ltRebate = space(13 - lenght(rebate))
+	ltDiscount = space(14 - lenght(discount))
+	ltTotal = space(14 - lenght(total))
 	
-    Escribir "---------------------------------------"
-    Escribir "************ Factura Final ************"
-    Escribir "---------------------------------------"
+	Escribir repeat("-", 39)
+    Escribir repeat("*", 12), " Factura Final ", repeat("*", 12)
+    Escribir repeat("-", 39)
     Escribir "| Valor Pagado        | ", ltBuy, buy, " |"
 	Escribir "| Descuento Aplicado  | ", ltRebate, rebate, "% |"
     Escribir "| Descuento           | ", ltDiscount, discount, " |"
     Escribir "| Valor Total         | ", ltTotal, total, " |"
-    Escribir "---------------------------------------"
+    Escribir repeat("-", 39)
 FinFuncion
 
-Funcion info <- space(cantidad)
-    Definir resultado Como Cadena
-    final = cantidad - 1
-    resultado = ""
+Funcion info <- lenght(value)
+    Definir text Como Cadena
+    text = ConvertirATexto(value)
+    info = Longitud(text)
+FinFuncion
+
+Funcion info <- space(count)
+    Definir result Como Cadena
+    final = count - 1
+    result = ""
     Para i=1 Hasta final Con Paso 1 Hacer
-		resultado = resultado + " "
+		result = result + " "
 	Fin Para
-    info = resultado
+    info = result
 FinFuncion
 
-Funcion info <- lenghtNumberReal(numeroReal)
-    Definir texto Como Cadena
-    texto = ConvertirATexto(numeroReal)
-    info = Longitud(texto)
+Funcion info <- repeat(character, count)
+    Definir result Como Cadena
+    result = ""
+    Para i = 1 Hasta count Con Paso 1 Hacer
+        result = result + character
+    FinPara
+    info = result
 FinFuncion

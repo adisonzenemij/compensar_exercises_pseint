@@ -16,7 +16,7 @@ Algoritmo Note_Student
 	// Ejecutar Proceso
     Para studentNum = 1 Hasta studentCount Con Paso 1 Hacer
 		message
-		studentLt = space(15 - lenghtNumberReal(studentNum))
+		studentLt = space(15 - lenght(studentNum))
         Escribir "| ", space(13),  " Nro. de Estudiante: ", studentLt, studentNum, space(13), " |"
 		Escribir repeat("-", 63)
 		
@@ -44,21 +44,22 @@ Funcion printResult(studenNum, studentCount, noteFinal)
 	message
     Escribir "| Estudiante | Nota 1 | Nota 2 | Nota 3 | Nota 4 | Nota Final |"
     Para studentNum = 1 Hasta studentCount Con Paso 1 Hacer
-		a1 = space(11 - lenghtNumberReal(noteFinal[studentNum, 1]))
-		a2 = space(7 - lenghtNumberReal(noteFinal[studentNum, 2]))
-		a3 = space(7 - lenghtNumberReal(noteFinal[studentNum, 3]))
-		a4 = space(7 - lenghtNumberReal(noteFinal[studentNum, 4]))
-		a5 = space(7 - lenghtNumberReal(noteFinal[studentNum, 5]))
-		a6 = space(11 - lenghtNumberReal(noteFinal[studentNum, 6]))
 		
-		t1 = noteFinal[studentNum, 1]
-		t2 = noteFinal[studentNum, 2]
-		t3 = noteFinal[studentNum, 3]
-		t4 = noteFinal[studentNum, 4]
-		t5 = noteFinal[studentNum, 5]
-		t6 = noteFinal[studentNum, 6]
+		tStud = noteFinal[studentNum, 1]
+		tOne = noteFinal[studentNum, 2]
+		tTwo = noteFinal[studentNum, 3]
+		tThree = noteFinal[studentNum, 4]
+		tFour = noteFinal[studentNum, 5]
+		tFinal = noteFinal[studentNum, 6]
 		
-        Escribir "| ", a1, t1, " | ", a2, t2, " | ", a3, t3, " | ", a4, t4, " | ", a5, t5, " | ", a6, t6, " |"
+		sStud = space(11 - lenght(tStud))
+		sOne = space(7 - lenght(tOne))
+		sTwo = space(7 - lenght(tTwo))
+		sThree = space(7 - lenght(tThree))
+		sFour = space(7 - lenght(tFour))
+		sFinal = space(11 - lenght(tFinal))
+		
+        Escribir "| ", sStud, tStud, " | ", sOne, tOne, " | ", sTwo, tTwo, " | ", sThree, tThree, " | ", sFour, tFour, " | ", sFinal, tFinal, " |"
     FinPara
 	Escribir repeat("-", 63)
 FinFuncion
@@ -69,33 +70,33 @@ Funcion info <- execCalificate(value, perc, text)
 	info = value * perc / 100
 FinFuncion
 
-Funcion info <- repeat(caracter, cantidad)
-    Definir resultado Como Cadena
-    resultado = ""
-    Para i = 1 Hasta cantidad Con Paso 1 Hacer
-        resultado = resultado + caracter
-    FinPara
-    info = resultado
-FinFuncion
-
-Funcion info <- space(cantidad)
-    Definir resultado Como Cadena
-    final = cantidad - 1
-    resultado = ""
-    Para i=1 Hasta final Con Paso 1 Hacer
-		resultado = resultado + " "
-	Fin Para
-    info = resultado
-FinFuncion
-
-Funcion info <- lenghtNumberReal(numeroReal)
-    Definir texto Como Cadena
-    texto = ConvertirATexto(numeroReal)
-    info = Longitud(texto)
-FinFuncion
-
 Funcion message
 	Escribir repeat("-", 63)
 	Escribir repeat("*", 22), " Fundacion Renacer ", repeat("*", 22)
 	Escribir repeat("-", 63)
+FinFuncion
+
+Funcion info <- lenght(value)
+    Definir text Como Cadena
+    text = ConvertirATexto(value)
+    info = Longitud(text)
+FinFuncion
+
+Funcion info <- space(count)
+    Definir result Como Cadena
+    final = count - 1
+    result = ""
+    Para i=1 Hasta final Con Paso 1 Hacer
+		result = result + " "
+	Fin Para
+    info = result
+FinFuncion
+
+Funcion info <- repeat(character, count)
+    Definir result Como Cadena
+    result = ""
+    Para i = 1 Hasta count Con Paso 1 Hacer
+        result = result + character
+    FinPara
+    info = result
 FinFuncion

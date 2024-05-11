@@ -44,6 +44,7 @@ Funcion printResult(value, subTl, total)
 	rProd = roundReal(value)
 	rSubt = roundReal(subTl)
 	rPaym = roundReal(total)
+	Escribir rPaym
 	
 	// Asignar Espacios
 	sProd = space(15 - lenght(rProd))
@@ -70,7 +71,7 @@ Funcion info <- space(count)
     Definir result Como Cadena
     final = count - 1
     result = ""
-    Para i=1 Hasta final Con Paso 1 Hacer
+    Para i = 1 Hasta final Con Paso 1 Hacer
 		result = result + " "
 	Fin Para
     info = result
@@ -86,28 +87,10 @@ Funcion info <- repeat(character, count)
     info = result
 FinFuncion
 
-// Redondear Decimales Real
-Funcion info <- roundDecimal(value)
-	Definir int, decimal, rounding Como Real
-	int <- trunc(value)
-	decimal <- value - int
-	decimal <- decimal * 100
-	decimal <- roundReal(decimal)
-	rounding <- (int + decimal / 100)
-	Escribir "rounding: ", rounding
-	info  = rounding
-FinFuncion
-
 // Redondear Valor Real
 Funcion info <- roundReal(value)
-	Escribir "value: ", value
 	Definir endInt, endDecimal Como Real
 	endInt <- trunc(value)
-	Escribir "endInt: ", endInt
 	endDecimal <- (value - endInt) * 100
-	Si endDecimal >= 50 Entonces
-		info = endInt + 1
-	Sino
-		info = endInt
-	FinSi
+	info = endInt
 FinFuncion

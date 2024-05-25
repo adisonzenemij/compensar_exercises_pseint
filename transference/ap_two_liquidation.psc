@@ -1,62 +1,64 @@
-Algoritmo sin_titulo
+Algoritmo DataLiquidation
 	// Definir Variables
-	Definir index, count Como Entero
-	// Definir Variables
+	Definir count Como Entero
 	Definir aNames, aSurNames Como Cadena
-	Definir aDocument, aSueldo, aDias, aVentas, aHoras, aDedu Como Real
-	Definir aNeto Como Real
+	
+	strgLoadLiq
 	// Capturar Valores
 	Escribir "¿Cuantos empleados desea liquidar?"
 	Leer count
 	Limpiar Pantalla
+	
 	// Definir Arreglos
-	Dimension aDocument(count), aNames(count), aSurNames(count)
-	Dimension aSueldo(count), aDias(count), aVentas(count)
-	Dimension aHoras(count), aDedu(count), aNeto(count)
+	Dimension aNames(count), aSurNames(count), dataArray[count, 7]
+	
 	// Procesar Informacion
-	strgEmployee(count, aDocument, aNames, aSurNames, aSueldo, aDias, aVentas, aHoras, aDedu)
-	calcularSalariosNetos(count, aSueldo, aDias, aVentas, aHoras, aDedu, aNeto)
+	strgEmployee(count, aNames, aSurNames, dataArray)
+	calculateSalaryNet(count, dataArray)
+	
 	// Imprimir Mensajes
+	strgLoadLiq
 	strgLoadMssg
+	
 	// Procesar Informacion
-	strgLoadData(count, aDocument, aNames, aSurNames, aSueldo, aDias, aVentas, aHoras, aDedu, aNeto)
-	calcularPromedioSueldo(count, aSueldo)
-	encontrarSalarioMinMax(count, aNeto)
+	strgLoadData(count, aNames, aSurNames, dataArray)
+	calculateAverageSalary(count, dataArray)
+	salaryFoundMinMax(count, dataArray)
 FinAlgoritmo
 
 // Capturar Informacion de Usuario
-SubProceso strgEmployee(index, a1, a2, a3, a4, a5, a6, a7, a8)
+SubProceso strgEmployee(index, aNames, aSurNames, dataArray)
 	// Ejecutar Proceso
 	Para item = 1 Hasta index Con Paso 1 Hacer
-		a1[item] <- loadTextR("Documento")
-		a2[item] <- loadTextC("Nombres")
-		a3[item] <- loadTextC("Apellidos")
-		a4[item] <- loadTextR("Sueldo Base")
-		a5[item] <- loadTextR("Dias Laborados")
-		a6[item] <- loadTextR("Comisiones por Ventas")
-		a7[item] <- loadTextR("Horas Extras Laboradas")
-		a8[item] <- loadTextR("Deducciones por Prestamos")
+		aNames[item] <- loadTextC("Nombres")
+		aSurNames[item] <- loadTextC("Apellidos")
+		dataArray[item, 1] = loadTextR("Documento")
+		dataArray[item, 2] = loadTextR("Sueldo Base")
+		dataArray[item, 3] = loadTextR("Dias Laborados")
+		dataArray[item, 4] = loadTextR("Comisiones por Ventas")
+		dataArray[item, 5] = loadTextR("Horas Extras Laboradas")
+		dataArray[item, 6] = loadTextR("Deducciones por Prestamos")
 		Limpiar Pantalla
 	FinPara
 FinSubProceso
 
 // Cargar Datos de Arreglos
-SubProceso strgLoadData(index, a1, a2, a3, a4, a5, a6, a7, a8, a9)
+SubProceso strgLoadData(index, aNames, aSurNames, dataArray)
 	// Ejecutar Proceso
 	Para item = 1 Hasta index Con Paso 1 Hacer
-		t1 = roundReal(a1[item]) // Arreglo Documento
-		t2 = a2[item]            // Arreglo Nombres
-		t3 = a3[item]            // Arreglo Apellidos
-		t4 = roundReal(a4[item]) // Arreglo Sueldo Base
-		t5 = roundReal(a5[item]) // Arreglo Dias Laborados
-		t6 = roundReal(a6[item]) // Arreglo Comisiones Ventas
-		t7 = roundReal(a7[item]) // Arreglo Horas Extras Laborales
-		t8 = roundReal(a8[item]) // Arreglo Deduciones Prestamos
-		t9 = roundReal(a9[item]) // Arreglo Sueldo Neto
+		t1 = aNames[item]                  // Arreglo Nombres
+		t2 = aSurNames[item]               // Arreglo Apellidos
+		t3 = roundReal(dataArray[item, 1]) // Arreglo Documento
+		t4 = roundReal(dataArray[item, 2]) // Arreglo Sueldo Base
+		t5 = roundReal(dataArray[item, 3]) // Arreglo Dias Laborados
+		t6 = roundReal(dataArray[item, 4]) // Arreglo Comisiones Ventas
+		t7 = roundReal(dataArray[item, 5]) // Arreglo Horas Extras Laborales
+		t8 = roundReal(dataArray[item, 6]) // Arreglo Deduciones Prestamos
+		t9 = roundReal(dataArray[item, 7]) // Arreglo Sueldo Neto
 		
-		s1 = space(10 - lenghtR(t1))
-		s2 = space(8  - lenghtC(t2))
-		s3 = space(10 - lenghtC(t3))
+		s1 = space(8  - lenghtC(t1))
+		s2 = space(10 - lenghtC(t2))
+		s3 = space(10 - lenghtR(t3))
 		s4 = space(12 - lenghtR(t4))
 		s5 = space(15 - lenghtR(t5))
 		s6 = space(18 - lenghtR(t6))
@@ -66,64 +68,106 @@ SubProceso strgLoadData(index, a1, a2, a3, a4, a5, a6, a7, a8, a9)
 		
 		Escribir "| ", s1, t1, " | ", s2, t2, " | ", s3, t3, " | ", s4, t4, " | ", s5, t5, " | ", s6, t6, " | ", s7, t7, " | ", s8, t8, " | ", s9, t9, " |"
 	FinPara
+	Escribir repeat("*", 150)
 FinSubProceso
 
-// Registros, Sueldo, Dias, Comisiones, Horas Extras, Deducciones, Sueldo Neto
-SubProceso calcularSalariosNetos(count, aSueldo, aDias, aVentas, aHoras, aDedu, aNeto)
+// Calcular Salarios Netos
+SubProceso calculateSalaryNet(count, data)
 	// Definir Variables
-	Definir subsidio Como Real
+	Definir subsidy Como Real
 	// Asingar Valores
-	subsidio = 140606
+	subsidy = 140606
 	Para item = 1 Hasta count Con Paso 1 Hacer
 		// Calcular Valor Hora Extra
-		valHour = calculateHourValue(subsidio, item, aSueldo, aHoras)
+		valHour = calculateHourValue(subsidy, item, data)
 		// Calcular subsidio de transporte
-		valTrans = calculateSubsidio(subsidio, item, aSueldo)
+		valTrans = calculateSubsidy(subsidy, item, data)
 		// Calcular Comisiones
-		valComision = calculateComision(item, aVentas)
+		valComision = calculateComision(item, data)
 		// Calcular Sueldo Neto
-		aNeto[item] = calculateSueldoNeto(item, aSueldo, aDias, aHoras,  valHour, valTrans, valComision)
+		// data[item, 7] = Sueldo Neto
+		data[item, 7] = calculateSueldoNeto(item, data,  valHour, valTrans, valComision)
+		//Escribir "data[item, 7]: ", data[item, 7]
 	FinPara
 FinSubProceso
 
 // Calcular Promedios Sueldos
-SubProceso calcularPromedioSueldo(count, aSueldo)
-	Definir sumaSueldo, promedioSueldo Como Real
-	sumaSueldo = 0
+SubProceso calculateAverageSalary(count, data)
+	Definir sumaSalary, averageSalary Como Real
+	sumaSalary = 0
 	
 	Para item = 1 Hasta count Con Paso 1 Hacer
-		sumaSueldo = sumaSueldo + aSueldo[item]
+		sumaSalary = sumaSalary + data[item, 2]
 	FinPara
 	
-	promedioSueldo = sumaSueldo / count
-	Escribir "El promedio de los sueldos básicos es: ", roundReal(promedioSueldo)
+	averageSalary = sumaSalary / count
+	roundAverage = roundReal(averageSalary)
+	spaceAverage = space(13 - lenghtR(roundAverage))
+	
+	// Imprimir Resultados
+	message = "Promedio Sueldos Basicos"
+	Escribir "|", repeat(" ", 4), message, repeat(" ", 5), "|", spaceAverage, roundAverage, " | ", repeat(" ", 99), "|"
+	Escribir repeat("*", 150)
 FinSubProceso
 
-// Identificar Salarios Minimos y Maximos
-SubProceso encontrarSalarioMinMax(count, aNeto)
-	Definir minSalario, maxSalario, minIndex, maxIndex Como Real
-	minSalario = aNeto[1]
-	maxSalario = aNeto[1]
-	minIndex = 1
-	maxIndex = 1
+SubProceso salaryFoundMinMax(count, data)
+	// Definir Variables
+    Definir minSalary, maxSalary Como Real
+    Definir minIndex, maxIndex Como Entero
+	Definir documentMin, documentMax Como Entero
 	
-	Para item = 2 Hasta count Con Paso 1 Hacer
-		Si aNeto[item] < minSalario Entonces
-			minSalario = aNeto[item]
-			minIndex = item
-		FinSi
-		Si aNeto[item] > maxSalario Entonces
-			maxSalario = aNeto[item]
-			maxIndex = item
-		FinSi
-	FinPara
+    // Asignar Valores
+    minIndex = 1
+    maxIndex = 1
 	
-	//Escribir "El menor salario neto es: ", minSalario, " correspondiente al empleado ", documentos[minIndex], " - ", nombres[minIndex], " ", apellidos[minIndex]
-	//Escribir "El mayor salario neto es: ", maxSalario, " correspondiente al empleado ", documentos[maxIndex], " - ", nombres[maxIndex], " ", apellidos[maxIndex]
+	// Inicializar valores del sueldo
+    minSalary = data[1, 7]
+    maxSalary = data[1, 7]
+	
+    // Inicializar Documentos
+    documentMin = data[1, 1]
+    documentMax = data[1, 1]
+	
+    // Recorrer toda la data para encontrar los salarios mínimos y máximos
+    Para item = 2 Hasta count Con Paso 1 Hacer
+        Si data[item, 7] < minSalary Entonces
+            minSalary = data[item, 7]
+            minIndex = item
+            documentMin = data[item, 1]
+        FinSi
+        Si data[item, 7] > maxSalary Entonces
+            maxSalary = data[item, 7]
+            maxIndex = item
+            documentMax = data[item, 1]
+        FinSi
+    FinPara
+	
+    // Imprimir Resultados
+	mDoc = "Documento"
+	tDcMin = documentMin
+	sDcMin = space(11 - lenghtR(tDcMin))
+	tDcMax = documentMax
+	sDcMax = space(11 - lenghtR(tDcMax))
+	
+	mSlMin = "Salario Neto Minimo"
+	tSlMin = roundReal(minSalary)
+	sSlMin = space(82 - lenghtR(tSlMin))
+	
+	mSlMax = "Salario Neto Maximo"
+	tSlMax = roundReal(maxSalary)
+	sSlMax = space(82 - lenghtR(tSlMax))
+	
+	Escribir "|", repeat(" ", 6), mDoc, repeat(" ", 6), "|", sDcMin, tDcMin, " |", repeat(" ", 5), mSlMin, repeat(" ", 5), " | ", sSlMin, tSlMin, " |"
+	Escribir "|", repeat(" ", 6), mDoc, repeat(" ", 6), "|", sDcMax, tDcMax, " |", repeat(" ", 5), mSlMax, repeat(" ", 5), " | ", sSlMax, tSlMax, " |"
+	Escribir repeat("*", 150)
 FinSubProceso
+
 
 // Calcular Valor por Hora
-Funcion info <- calculateHourValue(subsidio, item, aSueldo, aHoras)
+Funcion info <- calculateHourValue(subsidy, item, data)
+	// data[item, 2] = Sueldo Base
+	// data[item, 5] = Horas Extras
+	
 	// Definir Variables
 	Definir daysLabor, hourDays Como Entero
 	// Asingar Valores
@@ -132,17 +176,18 @@ Funcion info <- calculateHourValue(subsidio, item, aSueldo, aHoras)
 	//horasDiaras = 8 // Lunes a Sabados
 	
 	// Calcular Valor Salario
-	valSalary = aSueldo[item] + subsidio
+	valSalary = data[item, 2] + subsidy
 	// Calcular Dia Salario
 	daySalary = valSalary / daysLabor
 	// Calcular Valor Hora
 	valueHour = daySalary / hourDays
 	// Retornar Valor Final
-	info = valueHour * aHoras[item]
+	info = valueHour * data[item, 5]
 FinFuncion
 
 // Calcular Subsidio de Transporte
-Funcion info <- calculateSubsidio(subsidio, item, aSueldo)
+Funcion info <- calculateSubsidy(subsidy, item, data)
+	// data[item, 2] = Sueldo Base
 	// Definir Variables
 	Definir valueBase Como Real
 	// Asignar Valores
@@ -150,47 +195,59 @@ Funcion info <- calculateSubsidio(subsidio, item, aSueldo)
 	slmvMain = 1350000 // 1 (SLMV): $1,350,000 COP
 	slmvTwo = slmvMain * 2 // 2 (SLMV): $1,350,000 COP
 	// Validar Condicion
-	Si aSueldo[item] > slmvTwo Entonces
+	Si data[item, 2] > slmvTwo Entonces
 		// Asignar Valor
-		valueBase = subsidio
+		valueBase = subsidy
 	FinSi
 	// Retornar Valor Final
 	info = valueBase
 FinFuncion
 
 // Calcular Comision Ventas
-Funcion info <- calculateComision(index, aVentas)
+Funcion info <- calculateComision(index, data)
+	//  data[item, 4] = Comisiones Ventas
 	// Definir Variables
 	Definir valueComision, valorTotal Como Real
 	// Asignar Valores
 	valueComision = 0.20
+	//Escribir "data[index, 4]: ", data[index, 4]
 	// Calcular Valor Total
-	valorTotal = aVentas[index] * valueComision
+	valorTotal = data[index, 4] * valueComision
 	// Retornar Valor Final
 	info = valorTotal
 FinFuncion
 
 // Calcular Sueldo Neto
-Funcion info <- calculateSueldoNeto(item, aSueldo, aDias, aHoras,  valHour, valTrans, valComision)
+Funcion info <- calculateSueldoNeto(item, data,  valHour, valTrans, valComision)
+	// data[item, 3] = Dias Laborados
+	// data[item, 5] = Horas Extras
 	Definir dayMonth Como Entero
 	dayMonth = 30
 	// Calcular Valor Saldo Mensual
-	valSaldo = aSueldo[item] / dayMonth
+	valSaldo = data[item, 2] / dayMonth
 	// Calcular Dias Laborados
-	valDays = valSaldo * aDias[item]
+	valDays = valSaldo * data[item, 3]
 	// Calcular Horas Extras
-	valExtra = valDays + (aHoras[item] * valHour)
+	valExtra = valDays + (data[item, 5] * valHour)
 	// Calcular Saldo Neto Final
 	salarioNeto = valExtra + valComision + valTrans
 	// Retornar Valor Final
 	info = salarioNeto
 FinFuncion
 
+Funcion strgLoadLiq
+	Definir message Como Cadena
+	message = "Liquidacion Nomina Mensual Empresa XYZ"
+	Escribir repeat("*", 150)
+	Escribir "| ", repeat("*", 10), repeat(" ", 44), message, repeat(" ", 44), repeat("*", 10), " |"
+	Escribir repeat("*", 150)
+FinFuncion
+
 // Organizar Mensaje
 Funcion strgLoadMssg
-	m1 = "Documento"
-	m2 = "Nombres"
-	m3 = "Apellidos"
+	m1 = "Nombres"
+	m2 = "Apellidos"
+	m3 = "Documento"
 	m4 = "Sueldo Base"
 	m5 = "Dias Laborados"
 	m6 = "Comisiones Ventas"
@@ -198,7 +255,16 @@ Funcion strgLoadMssg
 	m8 = "Deducciones Prestamos"
 	m9 = "Salario Neto"
 	Escribir "| ", m1, " | ", m2, " | ", m3, " | ", m4, " | ", m5, " | ", m6, " | ", m7, " | ", m8, " | ", m9, " |"
+	Escribir repeat("*", 150)
 FinFuncion
+
+
+
+
+
+
+
+
 
 // Capturar Valores de Dato Real
 Funcion info <- loadTextR(message)

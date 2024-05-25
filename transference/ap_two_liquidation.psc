@@ -57,7 +57,7 @@ SubProceso strgLoadData(index, aNames, aSurNames, dataArray)
 		t7 = roundReal(dataArray[item, 5]) // Arreglo Horas Extras Laborales
 		t8 = roundReal(dataArray[item, 6]) // Arreglo Deduciones Prestamos
 		t9 = roundReal(dataArray[item, 7]) // Arreglo Sueldo Neto
-		// Ajustar Espaciados
+		// Ajustar Espacios
 		s1 = space(8  - lenghtC(t1))
 		s2 = space(10 - lenghtC(t2))
 		s3 = space(10 - lenghtR(t3))

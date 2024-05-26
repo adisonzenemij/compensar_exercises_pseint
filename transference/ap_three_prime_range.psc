@@ -84,7 +84,7 @@ FinSubProceso
 Funcion messageMain
 	// Imprimir Mensajes
 	Escribir repeat("*", 38)
-	Escribir "| ", repeat(" ", 7), "Algoritmo Nro Primos", repeat(" ", 7), " | "
+	Escribir "| ", repeat(" ", 7), "Algoritmo Nro Primos", repeat(" ", 7), " |"
 	Escribir repeat("*", 38)
 FinFuncion
 

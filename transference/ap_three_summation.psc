@@ -7,9 +7,9 @@ Algoritmo DataSummation
     Escribir "Diga el valor de la sumatoria:"
     Leer number
 	// Procesar Informacion
-    final = sumatoriaSerie(number)
+    result = sumatoriaSerie(number)
 	// Imprimir Mensajes
-    messageFinal(number, final)
+    messageFinal(number, result)
 FinAlgoritmo
 
 // Calcular Sumatoria Numeros
@@ -22,7 +22,7 @@ SubProceso info <- sumatoriaSerie(number)
 	messageResult
     // Bucle Calcular Sumatoria
     Para item <- 1 Hasta number Con Paso 1 Hacer
-		// Ejecutar Serie Establecida
+		// Procesar Informacion
 		valTerm = calculateSumm(item)
         summation <- summation + valTerm
     FinPara
@@ -32,15 +32,23 @@ FinSubProceso
 
 // Calcular Sumatorias
 SubProceso info <- calculateSumm(value)
-	// Asignar Valores
-	proccess = 0
 	// Ejecutar Operacion
 	proccess = (value * (value + 1)) ^ 2
 	// Imprimir Mensajes
-	messageSumm(value, proccess)
-	// Retornarl Valor Final
+	messageProccess(value, proccess)
+	// Retornar Valor Final
 	info = proccess
 FinSubProceso
+
+// Organizar Mensajes
+Funcion messageMain
+	// Imprimir Mensajes
+	Escribir repeat("*", 38)
+	Escribir "| ", repeat(" ", 7), "Algoritmo Sumatorias", repeat(" ", 7), " |"
+	Escribir repeat("*", 38)
+	Escribir "| ", repeat(" ", 8), "Serie (i*(i+1))^2", repeat(" ", 9), " | "
+	Escribir repeat("*", 38)
+FinFuncion
 
 // Organizar Mensajes
 Funcion messageResult
@@ -55,7 +63,7 @@ Funcion messageResult
 FinFuncion
 
 // Organizar Mensajes
-Funcion messageSumm(value, result)
+Funcion messageProccess(value, result)
 	// Ajustar Espacios
 	sValue = space(7 - lenghtR(value))
 	sResult = space(11 - lenghtR(result))
@@ -64,24 +72,14 @@ Funcion messageSumm(value, result)
 FinFuncion
 
 // Organizar Mensajes
-Funcion messageMain
-	// Imprimir Mensajes
-	Escribir repeat("*", 38)
-	Escribir "| ", repeat(" ", 7), "Algoritmo Sumatorias", repeat(" ", 7), " | "
-	Escribir repeat("*", 38)
-	Escribir "| ", repeat(" ", 8), "Serie (i*(i+1))^2", repeat(" ", 9), " | "
-	Escribir repeat("*", 38)
-FinFuncion
-
-// Organizar Mensajes
-Funcion messageFinal(number, final)
+Funcion messageFinal(number, result)
 	// Ajustar Espacios
 	sNumber = space(16 - lenghtR(number))
-	sFinal = space(15 - lenghtR(final))
+	sResult = space(16 - lenghtR(result))
 	// Imprimir Mensajes
 	Escribir repeat("*", 38)
     Escribir "| Valor Sumatoria   |", sNumber, number, " |"
-	Escribir "| Sumatoria Final   | ", sFinal, final, " |"
+	Escribir "| Sumatoria Final   |", sResult, result, " |"
 	Escribir repeat("*", 38)
 FinFuncion
 

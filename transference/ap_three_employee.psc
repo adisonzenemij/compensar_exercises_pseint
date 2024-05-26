@@ -1,17 +1,23 @@
-Algoritmo sin_titulo
+Algoritmo DataEmployee
+	// Definir Variables
 	Definir register Como Entero
+	// Asignar Valores
 	register = 1
+	// Definir Arreglos - Matrices
 	Dimension eNames(register)
 	Dimension eSurNs(register)
 	Dimension eAgeNo(register)
+	// Procesar Informacion
 	dataCapture(register, eNames, eSurNs, eAgeNo)
+	// Imprimir Informacion
 	dataPrint(register, eNames, eSurNs, eAgeNo)
 FinAlgoritmo
 
+// Procesar Informacion
 SubProceso dataCapture(index, eNames, eSurNs, eAgeNo)
 	// Imprimir Mensajes
 	Escribir repeat("*", 40)
-	Escribir "| ", repeat(" ", 8), "Capturar Informacion", repeat(" ", 8), " | "
+	Escribir "| ", repeat(" ", 8), "Capturar Informacion", repeat(" ", 8), " |"
 	Escribir repeat("*", 40)
     // Recorrer Datos
 	Para item = 1 Hasta index Con Paso 1 Hacer
@@ -21,10 +27,11 @@ SubProceso dataCapture(index, eNames, eSurNs, eAgeNo)
 	FinPara
 FinSubProceso
 
+// Organizar Mensajes
 SubProceso dataPrint(index, eNames, eSurNs, eAgeNo)
 	// Imprimir Mensajes
 	Escribir repeat("*", 40)
-	Escribir "| ", repeat(" ", 8), "Informacion Empleado", repeat(" ", 8), " | "
+	Escribir "| ", repeat(" ", 8), "Informacion Empleado", repeat(" ", 8), " |"
 	Escribir repeat("*", 40)
     // Recorrer Datos
 	Para item = 1 Hasta index Con Paso 1 Hacer

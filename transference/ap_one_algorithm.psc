@@ -16,6 +16,8 @@ Algoritmo OneAlgorithm
 	opRepetir
 	// Funcion utilizando condicional para
 	opPara
+	
+	mensaje
 FinAlgoritmo
 
 Funcion opEscribirLeer
@@ -59,16 +61,16 @@ Funcion opSegun
 	mensaje
 	Escribir "Funcion Segun"
 	Definir comida Como Entero
-	Escribir "Opciones: Pasta, Pollo, Carne"
+	Escribir "Opciones: 1: Pasta, 2: Pollo, 3: Carne"
 	Escribir "Que te gusta comer"
 	Leer comida
 	Segun comida Hacer
-		Pasta:
+		1:
 			Escribir "Que sabroso saber que te gusta la pasta"
-		Pollo:
-			Escribir "Que sabroso saber que te gusta la pasta"
-		Carne:
-			Escribir "Que sabroso saber que te gusta la pasta"
+		2:
+			Escribir "Que sabroso saber que te gusta la pollo"
+		3:
+			Escribir "Que sabroso saber que te gusta la carne"
 		De Otro Modo:
 			Escribir "Esta bien que te guste otra comida"
 	Fin Segun
